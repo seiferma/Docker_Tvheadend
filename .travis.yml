@@ -1,0 +1,18 @@
+sudo: false
+language: ruby
+services:
+  - docker
+before_install:
+  - git clone --depth 1 https://github.com/seiferma/Docker_BuildUtils.git /tmp/BuildUtils
+  - . /tmp/BuildUtils/travisSetup.sh
+script:
+  - travisBuild.sh
+deploy:
+  provider: script
+  script: travisDeploy.sh
+  on:
+    branch: master
+env:
+  global: 
+    - IMAGE_NAME=seiferma/tvheadend
+    - secure: "ffkTJK6RrLcx1Ns/Vtd6j8VEWFYQAfrlbkmk9l5PuIkbySX0lryDq6B4fn/CXEwzB+yyNJ77+smp0EQrcWn7LhlC/R9PfeNkxPW8+rC/36cAmTVx1gnEqMzA8GFjqWS5ZSVNFrEj+k+j3ad+C81Nx8jxBFfNtKuI9T7/PXYPK/veS66ZEckl5rgzx28E5U9GN+Sa74NVTeW+CGuECXf8Ld+MYl/sfHeQ3KAOGdreV7Z4NlcHdGDcEZB6QWJuijdhRs0cb7zpBXJPaTZOKljT6cpevpQ3TpZe9ntaOWUnAMDKVTk4d+HKylGzSH5O0c4SUSYGINdySjX853+5doOPmDomC5IFcDM+925r8WB0Ae8oAZS0kj5SQUkNNDPCIArCtYgEtES8E9P20IEMZxnyTPvVxJblWE3gPsFOJ5oRTIv1RlgcoOxmTDt5Dq6nUkp8vFq12Q6JjVr/i3BzuyKhZUvSMT3IA1K01LqvxT7gM9wDecrt/07y9nAu4iWOyAncrEcNc5gVji1LTmCYQcoboDEygBImGS/Q44kDPownXZ5ubhb+ymy3ReN31hs9kJ3vXqRWFYCk8fMkN5aNJT5GlyltEsakbRrqdafmuEDmRlXD6jg9AwowNnFNautxXkaCZDbsRY2qBYC6Pb6fYlGd1GLN7EWvACBgoGT7Eyf7LRM="
