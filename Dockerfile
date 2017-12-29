@@ -10,7 +10,7 @@ ENV RECORDINGS_VOLUME=/recordings
 ENV CONFIG_VOLUME=/config
 
 RUN USERNAME=tvh && \
-    addgroup ${USERNAME} && \
+    addgroup -g 2001 ${USERNAME} && \
     adduser -u 2001 -G ${USERNAME} -h . -s /bin/false -D ${USERNAME} && \
     chown -R ${USERNAME}:${USERNAME} . && \
     mkdir -p ${RECORDINGS_VOLUME} && \
