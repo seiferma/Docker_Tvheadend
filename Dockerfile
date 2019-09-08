@@ -2,7 +2,7 @@ FROM alpine:latest
 
 WORKDIR /home/tvh
 
-RUN VERSION=4.2.7-r2 && \
+RUN VERSION=4.2.8-r0 && \
     apk --no-cache add tvheadend=${VERSION} && \
     VERSION=
 
