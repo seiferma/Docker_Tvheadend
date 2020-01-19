@@ -2,9 +2,11 @@ FROM alpine:latest
 
 WORKDIR /home/tvh
 
-RUN VERSION=4.2.8-r0 && \
-    apk --no-cache add tvheadend=${VERSION} && \
-    VERSION=
+RUN TVH_VERSION=4.2.8-r1 && \
+    FFMPEG_VERSION=4.2.1-r3 && \
+    apk --no-cache add tvheadend=${TVH_VERSION} ffmpeg=${FFMPEG_VERSION} && \
+    TVH_VERSION= && \
+    FFMPEG_VERSION=
 
 ENV RECORDINGS_VOLUME=/recordings
 ENV CONFIG_VOLUME=/config
